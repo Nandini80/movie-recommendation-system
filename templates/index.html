@@ -4,17 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Recommender System</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            margin-top: -50px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styling for form */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 100%;
+        }
+
+        /* Ensure the select dropdown appears correctly */
+        select:focus {
+            outline: none;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Movie Recommender System</h1>
-    <form action="/recommend" method="post">
-        <label for="movie">Select a movie:</label>
-        <select name="movie" id="movie">
-            {% for movie in movie_list %}
-                <option value="{{ movie }}">{{ movie }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Recommend</button>
-    </form>
+    <div class="container">
+        <h1>Movie Recommender System</h1>
+        <form action="/recommend" method="post">
+            <div class="form-group">
+                <label for="movie">Select a movie:</label>
+                <select name="movie" id="movie">
+                    {% for movie in movie_list %}
+                        <option value="{{ movie }}">{{ movie }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Recommend</button>
+        </form>
+    </div>
 </body>
 </html>
