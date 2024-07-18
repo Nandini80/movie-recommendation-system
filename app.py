@@ -23,9 +23,13 @@ def recommend(movie):
         recommended_movies.append(movies.iloc[i[0]].title)
     return recommended_movies, recommended_movie_posters
 
-movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
-movies = pd.DataFrame(movies_dict)
+try:
+    movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
+    similarity = pickle.load(open('similarity.pkl', 'rb'))
+    movies = pd.DataFrame(movies_dict)
+    print("Files loaded successfully")
+except Exception as e:
+    print("Error loading files:", e)
 
 @app.route('/')
 def index():
